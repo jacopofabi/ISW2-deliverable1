@@ -1,0 +1,13 @@
+language: java
+
+jdk:
+  - openjdk11
+
+addons:
+  sonarcloud:
+    organization: "jacopofabi"
+    token: "1349c0b36e117dc811650b37ce8c340af86c6f6f"
+     
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean verify sonar:sonar -Dsonar.projectKey=jacopofabi_ISW2-deliverable1

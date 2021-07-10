@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Jacopo</groupId>
+  <artifactId>Deliverable1</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+    <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	<sonar.organization>jacopofabi</sonar.organization>
+	<!--<sonar.projectKey>jacopofabi_ISW2-deliverable2</sonar.projectKey>-->
+	<sonar.projectName>ISW2-deliverable1</sonar.projectName>
+	<sonar.login>1349c0b36e117dc811650b37ce8c340af86c6f6f</sonar.login>
+	<sonar.language>java</sonar.language>
+	<sonar.java.source>11</sonar.java.source>
+	<sonar.java.file.suffixes>.java</sonar.java.file.suffixes>
+	<sonar.verbose>true</sonar.verbose>
+  </properties>
+  
+  <dependencies>
+
+ 	 <dependency>
+ 	 	<groupId>org.eclipse.jgit</groupId>
+ 	 	<artifactId>org.eclipse.jgit</artifactId>
+ 	 	<version>5.11.0.202103091610-r</version>
+ 	 </dependency>
+ 	 
+	 <dependency>
+	 	<groupId>org.json</groupId>
+	  	<artifactId>json</artifactId>
+	  	<version>20160810</version>
+	</dependency>
+	
+  </dependencies>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+	  <plugin>
+		<groupId>org.sonarsource.scanner.maven</groupId>
+		<artifactId>sonar-maven-plugin</artifactId>
+		<version>3.6.0.1398</version>
+	  </plugin>
+    </plugins>
+  </build>
+</project>
