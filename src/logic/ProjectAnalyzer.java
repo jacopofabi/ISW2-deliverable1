@@ -58,7 +58,8 @@ public class ProjectAnalyzer {
 		} while (i < total);
 
 	}
-
+	
+	//il mapping Jira-Git è stato implementato ma non è funzionante per il progetto Falcon, questo perchè su Github è diventato "read-only", non potendo recuperare i commit
 	public void mapOnGit() throws IOException, GitAPIException {
 		GitAPI git = new GitAPI(this.gitProjectName, "output/");
 		git.init();
@@ -77,13 +78,12 @@ public class ProjectAnalyzer {
 		return this.fixedBugs;
 	}
 
-	public static void main(String[] args) throws IOException, JSONException, ParseException, GitAPIException {
+	public static void main(String[] args) throws IOException, JSONException, ParseException {
 
 
 		ProjectAnalyzer analyzer = new ProjectAnalyzer("FALCON", "falcon");
 		analyzer.analyze();
 
-		//il mapping Jira-Git è stato implementato ma non è funzionante per il progetto Falcon, questo perchè su Github è diventato "read-only" non potendo recuperare i commit
 		//analyzer.mapOnGit();
 		//List<FixedBug> fixedBugs = analyzer.getFixedBugs();
 		
