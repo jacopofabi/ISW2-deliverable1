@@ -20,7 +20,7 @@ public class ProjectAnalyzer {
 
 	private String projectName;
 	private String gitProjectName;
-	private static final String SEARCH_QUERY = "%22AND%22issueType%22=%22Bug%22AND(%22status%22=%22Done%22OR%22status%22=%22resolved%22)AND%22resolution%22=%22Done%22&fields=key,resolutiondate,versions,created&startAt=";
+	private static final String SEARCH_QUERY = "%22AND%22issueType%22=%22Bug%22AND(%22status%22=%22closed%22OR%22status%22=%22resolved%22)AND%22resolution%22=%22fixed%22&fields=key,resolutiondate,versions,created&startAt=";
 	private static final String JIRA_HTTP_URL = "https://issues.apache.org/jira/rest/api/2/search?jql=project=%22";
 	private String url;
 	private List<FixedBug> fixedBugs;
@@ -29,7 +29,6 @@ public class ProjectAnalyzer {
 		this.projectName = projectName;
 		this.gitProjectName = gitProjectName;
 		this.url = JIRA_HTTP_URL + this.projectName + SEARCH_QUERY;
-
 	}
 
 	public void analyze() throws JSONException, IOException, ParseException {
@@ -81,13 +80,14 @@ public class ProjectAnalyzer {
 	public static void main(String[] args) throws IOException, JSONException, ParseException, GitAPIException {
 
 
-		ProjectAnalyzer analyzer = new ProjectAnalyzer("FALCON", "incubator-s2graph");
+		ProjectAnalyzer analyzer = new ProjectAnalyzer("FALCON", "falcon");
 		analyzer.analyze();
 
-		analyzer.mapOnGit();
-		List<FixedBug> fixedBugs = analyzer.getFixedBugs();
-
-		CSVWriter.write("FALCON", fixedBugs);
+		//il mapping Jira-Git è stato implementato ma non è funzionante per il progetto Falcon, questo perchè su Github è diventato "read-only" non potendo recuperare i commit
+		//analyzer.mapOnGit();
+		//List<FixedBug> fixedBugs = analyzer.getFixedBugs();
+		
+		CSVWriter.write("FALCON", analyzer.getFixedBugs());
 	}
 
 }
