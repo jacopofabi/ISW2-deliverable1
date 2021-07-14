@@ -83,9 +83,6 @@ public class ProjectAnalyzer {
 
 		ProjectAnalyzer analyzer = new ProjectAnalyzer("FALCON", "falcon");
 		analyzer.analyze();
-
-		//analyzer.mapOnGit();
-		//List<FixedBug> fixedBugs = analyzer.getFixedBugs();
 		
 		CSVWriter.write("FALCON", analyzer.getFixedBugs());
 	}
